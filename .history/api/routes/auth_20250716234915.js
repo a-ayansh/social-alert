@@ -5,8 +5,11 @@ const User = require('../models/User');
 const auth = require('../middleware/auth');
 const rateLimit = require('express-rate-limit');
 
+// Create Express Router - THIS IS CRUCIAL!
 const router = express.Router();
 
+// Missing Alert System - Auth Routes
+// Built by Aayansh03 | 2025-07-14 17:55:23
 
 console.log('🚨 Auth routes initializing...');
 

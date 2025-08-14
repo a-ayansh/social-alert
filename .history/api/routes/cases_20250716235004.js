@@ -5,9 +5,14 @@ const auth = require('../middleware/auth');
 
 const router = express.Router();
 
-
 console.log('📋 Cases routes with fixed endpoint order...');
 
+// CRITICAL FIX: Put specific routes BEFORE parameterized routes
+// This prevents /my/1 from being caught by /:id route
+
+// @route   GET /api/cases/stats/summary
+// @desc    Get case statistics (MUST BE FIRST)
+// @access  Public
 router.get('/stats/summary', async (req, res) => {
   try {
     console.log('📊 Get comprehensive stats request');
@@ -118,6 +123,10 @@ router.get('/my', auth, async (req, res) => {
     });
   }
 });
+
+// @route   GET /api/cases
+// @desc    Get all cases with filtering (BEFORE /:id)
+// @access  Public
 router.get('/', async (req, res) => {
   try {
     console.log('📋 Get all cases request');

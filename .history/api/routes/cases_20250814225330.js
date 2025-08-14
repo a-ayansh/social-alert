@@ -118,6 +118,10 @@ router.get('/my', auth, async (req, res) => {
     });
   }
 });
+
+// @route   GET /api/cases
+// @desc    Get all cases with filtering (BEFORE /:id)
+// @access  Public
 router.get('/', async (req, res) => {
   try {
     console.log('📋 Get all cases request');
